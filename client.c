@@ -6,7 +6,7 @@
 /*   By: knomura <knomura@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/14 10:40:35 by knomura           #+#    #+#             */
-/*   Updated: 2025/09/19 19:35:56 by knomura          ###   ########.fr       */
+/*   Updated: 2025/09/20 15:33:17 by knomura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,17 +29,6 @@ void	send_char(int pid, char c)
 		i--;
 	}
 }
-
-// void	send_char(int pid, char c)
-// {
-// 	if (c == '0')
-// 		kill(pid, SIGUSR1);
-// 	else if (c == '1')
-// 		kill(pid, SIGUSR2);
-// 	else
-// 		kill(pid, SIGINT);
-// 	usleep(100);
-// }
 
 int main(int argc, char **argv)
 {
