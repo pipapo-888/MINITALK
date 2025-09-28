@@ -6,7 +6,7 @@
 /*   By: knomura <knomura@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/14 10:40:35 by knomura           #+#    #+#             */
-/*   Updated: 2025/09/28 18:39:02 by knomura          ###   ########.fr       */
+/*   Updated: 2025/09/28 19:41:52 by knomura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,12 @@
 #include <unistd.h>
 #include <stdlib.h>
 
+volatile sig_atomic_t flag = 0;
+
 void	handler(int sig)
 {
 	(void)sig;
+	flag = 1;
 }
 
 void	send_char(int pid, char c)
@@ -55,7 +58,3 @@ int main(int argc, char **argv)
 		i++;
 	}
 }
-
-
-// 000
-// PIDに数字以外が入った　PIDがマイナス
