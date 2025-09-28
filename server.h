@@ -6,7 +6,7 @@
 /*   By: knomura <knomura@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 12:30:29 by knomura           #+#    #+#             */
-/*   Updated: 2025/09/15 13:25:07 by knomura          ###   ########.fr       */
+/*   Updated: 2025/09/28 18:11:38 by knomura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 
 # define _GNU_SOURCE
 
+# include "PRINTF/ft_printf.h"
+
 #include <stdio.h>
 #include <unistd.h>
 #include <signal.h>
-
-void	ft_putstr_fd(char *s, int fd);
 
 #endif

@@ -6,18 +6,18 @@
 /*   By: knomura <knomura@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/14 10:40:41 by knomura           #+#    #+#             */
-/*   Updated: 2025/09/20 15:32:55 by knomura          ###   ########.fr       */
+/*   Updated: 2025/09/28 18:39:07 by knomura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "server.h"
 
-void	handler(int sig)
+void	handler(int sig, siginfo_t *info, void *context)
 {
 	static unsigned char 	c;
 	static int				bit = 0;
 
+	(void)context;
 	c = c << 1;
 	if (sig == SIGUSR2)
 		c = c | 1;
@@ -29,19 +29,8 @@ void	handler(int sig)
 		bit = 0;
 		c = 0;
 	}
+	kill(info->si_pid, SIGUSR1);
 }
-
-// void	handler(int sig)
-// {
-// 	if (sig == SIGUSR1)
-// 		write(1,"0",1);
-// 	else if (sig == SIGUSR2)
-// 		write(1,"1",1);
-// 	else if (sig == SIGINT)
-// 		write(1, "HELLO!\n", 7);
-// 	else
-// 		write(1, "2", 1);
-// }
 
 int main()
 {
@@ -49,18 +38,11 @@ int main()
 	pid = getpid();
 	printf("PID:%d\n", pid);
 
-	// struct sigaction sa;
-	// sa.sa_handler = handler;
-	// sa.sa_flags = 0;
-	// sigaction(SIGUSR1, &sa, NULL);
-	// sigaction(SIGUSR2, &sa, NULL);
-
-	printf("%d %d\n",SIGUSR1, SIGUSR2);
-
-	signal(SIGUSR1, handler);
-	signal(SIGUSR2, handler);
-	// signal(SIGINT, handler);
-
+	struct sigaction sa;
+	sa.sa_sigaction = handler;
+	sa.sa_flags = SA_SIGINFO;
+	sigaction(SIGUSR1, &sa, NULL);
+	sigaction(SIGUSR2, &sa, NULL);
 
 	while (1)
 	{
