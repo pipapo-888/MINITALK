@@ -6,7 +6,7 @@
 /*   By: knomura <knomura@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/14 10:40:41 by knomura           #+#    #+#             */
-/*   Updated: 2025/09/28 18:39:07 by knomura          ###   ########.fr       */
+/*   Updated: 2025/10/04 12:53:41 by knomura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int main()
 {
 	int pid;
 	pid = getpid();
-	printf("PID:%d\n", pid);
+	ft_printf("PID:%d\n", pid);
 
 	struct sigaction sa;
 	sa.sa_sigaction = handler;

@@ -6,7 +6,7 @@
 /*   By: knomura <knomura@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/14 10:40:35 by knomura           #+#    #+#             */
-/*   Updated: 2025/09/28 19:41:52 by knomura          ###   ########.fr       */
+/*   Updated: 2025/10/04 16:52:24 by knomura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,10 @@ void	send_char(int pid, char c)
 			kill(pid, SIGUSR2);
 		else
 			kill(pid, SIGUSR1);
+		while (!flag)
+			usleep(1);
+		flag = 0;
 		i--;
-		pause();
 	}
 }
 
