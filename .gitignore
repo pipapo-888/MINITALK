@@ -3,3 +3,5 @@ client
 server
 *.o
 *.a
+server_bonus
+client_bonus
