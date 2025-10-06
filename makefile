@@ -6,7 +6,7 @@
 #    By: knomura <knomura@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/19 19:38:49 by knomura           #+#    #+#              #
-#    Updated: 2025/10/06 00:46:06 by knomura          ###   ########.fr        #
+#    Updated: 2025/10/06 15:02:28 by knomura          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,14 +46,16 @@ bonus: $(SERVER_BONUS) $(CLIENT_BONUS)
 $(SERVER_BONUS): $(SERVER_BONUS_OBJ) $(PRINTF)
 	$(CC) $(SERVER_BONUS_OBJ) $(PRINTF) -o $@
 
-$(CLIENT_BONUS): $(CLIENT_BONUS_OBJ)
+$(CLIENT_BONUS): $(CLIENT_BONUS_OBJ) 
 	$(CC) $(CLIENT_BONUS_OBJ) -o $@
 
 clean:
-	rm -f $(SERVER_OBJ) $(CLIENT_OBJ) $(SERVER_BONUS_OBJ) $(CLIENT_BONUS_OBJ) 
+	rm -f $(SERVER_OBJ) $(CLIENT_OBJ) $(SERVER_BONUS_OBJ) $(CLIENT_BONUS_OBJ)
+	make -C PRINTF clean
 
 fclean: clean
 	rm -f $(SERVER) $(CLIENT) $(SERVER_BONUS) $(CLIENT_BONUS)
+	make -C PRINTF fclean
 
 re: fclean all
 
